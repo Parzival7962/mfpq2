@@ -34,9 +34,12 @@
     </head>
     <body>
         
-        <h1></h1>
-        
+        <h1>Meh</h1>
 
+        <h2> </h2>
+        <p></p>
+        
+        
         <canvas id="mycanvas"></canvas>
             
 
@@ -49,7 +52,144 @@
             with (processingInstance) {
                 size(400, 400); 
                 frameRate(60);
-                
+
+
+                imageMode(CENTER);
+
+
+var cakeWidth = 200; 
+var cakeHeight = 50;
+var cakeDepth = 200;
+var rotY = 1;
+var rotX = 2;
+var decs = 0;
+var linesSymmetry = null;
+var k = 0;
+var layers = 0;
+var frostingColor = color(184, 103, 184);
+var topView = false;
+var dec = function(){
+    
+};
+
+
+var topCenter = [];
+var bottomCenter = [];
+
+
+draw= function() {
+    
+    for (var i = 0; i < 1; i++) { 
+            translate(100, 100);
+    }
+    background(255, 255, 255);
+    fill(frostingColor);
+    
+    text(rotX, -100, -150);
+    
+    //rotation
+    if(true){
+        rotX = rotX/10;
+        
+        if(rotX <= 1){
+            rotX = 1;
+            topView = true;
+        }
+        
+        if(topView){
+            cakeHeight = 0;
+        }
+        
+        if(rotX > 1){
+            topView = false;
+            
+        }
+    topCenter = [0, 0];
+    bottomCenter = [0, cakeHeight];
+    }
+    
+    //draws cake
+    if(true){
+        noStroke();
+        quad(-(cakeWidth/2), 0, -(cakeWidth/2), cakeHeight, cakeWidth/2, cakeHeight, cakeWidth/2, 0);
+        stroke(0, 0, 0);
+        
+        
+        arc(bottomCenter[0], bottomCenter[1], cakeWidth, cakeDepth/rotX, 0, 180);
+        
+        ellipse(topCenter[0], topCenter[1], cakeWidth, cakeDepth/rotX);
+        
+        line(-(cakeWidth/2), 0, -(cakeWidth/2), cakeHeight);
+        
+        line((cakeWidth/2), 0, (cakeWidth/2), cakeHeight);
+    }
+    
+    //decorations and lines of symmetry
+    if(true){
+        if(decs < 0){
+            decs = 0;
+            
+        }
+        else if(decs === 0){
+            linesSymmetry = "infinite";
+            
+        }
+        else{ 
+            linesSymmetry = decs; 
+        }
+        
+        fill(frostingColor);
+        text(linesSymmetry, 0, -150);
+        
+        
+        if(decs === 1){
+            //decPos = [0, 0];
+            
+            
+        }
+        
+        
+    }
+    
+    //fixes cake variables
+    if(true){
+        cakeWidth = 200; 
+        cakeHeight = 50;
+        cakeDepth = 200;
+    }
+    
+    rotX *= 10;
+    
+};
+
+keyPressed = function(){
+    
+    if(key.toString() === "s"){
+        rotX += 1;
+    }
+    
+    if(key.toString() === "w"){
+        rotX -= 1;
+        
+    }
+    
+    if(keyCode === DOWN){
+        decs -= 1;
+        
+    }
+    
+    if(keyCode === UP){
+        decs += 1;
+        
+    }
+    
+};
+
+
+
+
+
+
                 
                     
                     
